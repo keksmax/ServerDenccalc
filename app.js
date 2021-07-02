@@ -52,10 +52,10 @@ async function saveDataFromSourceData(data, responce) {
         let gammaSecond = String(getGamma(dens15Second, sourceData[6]));
         let denstpFirst = castDensityCalc(dens15First, bettaFirst, sourceData[6], gammaFirst, sourceData[7])
         let denstPSecond = castDensityCalc(dens15Second, bettaSecond, sourceData[6], gammaSecond, sourceData[7])
-        let densityFinal = (((parseFloat(denstpFirst) + parseFloat(denstPSecond)) / 2) + parseFloat(sourceData[8])).toFixed(2);
+        let densityFinal = (((parseFloat(denstpFirst) + parseFloat(denstPSecond)) / 2) - parseFloat(sourceData[8])).toFixed(2);
 
         getBetta(dens15First);
-        console.log(sourceData);
+        console.log('Данные пришли = ' +sourceData);
 
         let result = {
             'densityFinalCalc': densityFinal,
@@ -72,6 +72,7 @@ async function saveDataFromSourceData(data, responce) {
             'gammaFirst': gammaFirst,
             'gammaSecond': gammaSecond,
         }
+        console.log('Данные подготовлены к отправке = ' + JSON.stringify(result));
         responce.json(result);
     } catch (e) {
         responce.send(e);

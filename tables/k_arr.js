@@ -2,6 +2,7 @@ const K_arr = [0.9998, 0.9998, 0.9998, 0.99981, 0.99981, 0.99981, 0.99982, 0.999
 
 function Get_K20_K15(temp) {
     try {
+        while (temp>45) return  0;
         temp = parseInt(temp);
         let temper = (temp + 15).toFixed(0);
         if (temper > K_arr.length) return -1;

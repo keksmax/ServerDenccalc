@@ -2,7 +2,7 @@ const dens20 = require('../tables/dens20');
 
 function denc20Calculation(dens15) {
     try {
-        while (dens15<750) return 0;
+        while (dens15<750 || dens15>960) return 0;
         let col = ((dens15 - 750) * 10).toFixed(0);
         if (col > dens20.length) {
             return 0;
